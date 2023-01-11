@@ -4,8 +4,8 @@ import cv2
 import pytesseract
 
 
-def read_image(imgPath, debug = False):
-    img = cv2.imread(imgPath)
+def read_image(img, debug = False):
+    # img = cv2.imread(imgPath)
     thr = remove_noise_and_smooth(img, debug=debug)
     custom_config = r'--oem 3 --psm 6'
     txt = pytesseract.image_to_string(thr,  config=custom_config)
