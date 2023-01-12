@@ -18,15 +18,14 @@ def allowed_file(filename):
 def acceptFile():
     file = request.files['file']
     data = request.form
-    print(data)
 
     isAsync = int(data.get("isAsync", 0))
     url = data.get("url", None)
-    uuid = data.get("uuid", uuid4())
+    uuid = data.get("uuid", str(uuid4()))
 
     if file and allowed_file(file.filename):
         data = CallbackData(
-            None if isAsync else url, 
+            url if isAsync else None, 
             file,
             uuid
         )
@@ -38,6 +37,11 @@ def acceptFile():
         else:
             th.join()
             return th.getCompletedData()
+
+@app.route('/echo', methods=['POST'])
+def testCB():
+    res = request.get_json()
+    return res
 
 if __name__ == '__main__':
       app.run(host='0.0.0.0', port=5001, debug=True)

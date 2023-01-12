@@ -2,6 +2,7 @@ import threading
 import requests
 import cv2
 import numpy
+import json
 
 from receiptparser.config import read_config
 from receiptparser.receipt import Receipt
@@ -9,7 +10,6 @@ from data.callbackData import CallbackData
 from access.tesseract import read_image
 
 config = read_config('./config/config.yml')
-
 
 class ReceiptReaderThread(threading.Thread):
     def __init__(self, cb: CallbackData):
@@ -26,11 +26,14 @@ class ReceiptReaderThread(threading.Thread):
         if not self.done or not self.cb.url:
             return
 
-        r = requests.post(self.cb.url, data={
+        headers = {'Content-type': 'application/json'}
+
+        data ={
             "uuid": self.cb.uuid,
             **self.data
-        })
+        }
 
+        r = requests.post(self.cb.url, data=json.dumps(data), headers=headers)
         if r.status_code != 200:
             ...
 
