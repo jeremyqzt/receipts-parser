@@ -1,8 +1,9 @@
 from dataclasses import dataclass
+from typing import Optional
 
 @dataclass
 class CallbackData:
     """Class of a image parse callback"""
-    url: str
+    url: Optional[str]
     fileContent: object
     uuid: str

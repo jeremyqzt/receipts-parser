@@ -10,14 +10,35 @@ from access.tesseract import read_image
 
 config = read_config('./config/config.yml')
 
+
 class ReceiptReaderThread(threading.Thread):
     def __init__(self, cb: CallbackData):
         threading.Thread.__init__(self)
         self.cb = cb
+        self.data = None
+        self.done = False
         img = cv2.imdecode(numpy.fromstring(
             cb.fileContent.read(), numpy.uint8), cv2.IMREAD_UNCHANGED)
 
         self.text = read_image(img)
+
+    def makeRequest(self):
+        if not self.done or not self.cb.url:
+            return
+
+        r = requests.post(self.cb.url, data={
+            "uuid": self.cb.uuid,
+            **self.data
+        })
+
+        if r.status_code != 200:
+            ...
+
+    def getCompletedData(self):
+        if (not self.done):
+            raise Exception("Not yet done")
+
+        return self.data
 
     def run(self):
         receipt = Receipt.from_text(config, self.text)
@@ -31,10 +52,7 @@ class ReceiptReaderThread(threading.Thread):
             "sum": receipt.sum
         }
 
-        print(data)
+        self.data = data
+        self.done = True
 
-        if self.cb.url:
-            r = requests.post(url=self.cb.url, data=data)
-            status = r.status_code
-            if (status != 200):
-                ...
+        self.makeRequest()
