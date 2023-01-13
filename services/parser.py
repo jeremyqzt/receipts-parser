@@ -11,6 +11,7 @@ from access.tesseract import read_image
 
 config = read_config('./config/config.yml')
 
+
 class ReceiptReaderThread(threading.Thread):
     def __init__(self, cb: CallbackData):
         threading.Thread.__init__(self)
@@ -26,9 +27,10 @@ class ReceiptReaderThread(threading.Thread):
         if not self.done or not self.cb.url:
             return
 
-        headers = {'Content-type': 'application/json'}
+        headers = {'Content-type': 'application/json'} if self.cb.additionalHeaders is None else {
+            **json.loads(self.cb.additionalHeaders), 'Content-type': 'application/json'}
 
-        data ={
+        data = {
             "uuid": self.cb.uuid,
             **self.data
         }

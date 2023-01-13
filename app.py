@@ -22,10 +22,12 @@ def acceptFile():
     isAsync = int(data.get("isAsync", 0))
     url = data.get("url", None)
     uuid = data.get("uuid", str(uuid4()))
+    header = data.get("additionalHeaders", None)
 
     if file and allowed_file(file.filename):
         data = CallbackData(
-            url if isAsync else None, 
+            url if isAsync else None,
+            header if isAsync else None,
             file,
             uuid
         )
@@ -41,6 +43,7 @@ def acceptFile():
 @app.route('/echo', methods=['POST'])
 def testCB():
     res = request.get_json()
+    print(request.headers)
     return res
 
 if __name__ == '__main__':
