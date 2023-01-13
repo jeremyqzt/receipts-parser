@@ -10,9 +10,11 @@ ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 
 @app.route('/parse', methods=['POST'])
 def acceptFile():
@@ -40,11 +42,15 @@ def acceptFile():
             th.join()
             return th.getCompletedData()
 
+
 @app.route('/echo', methods=['POST'])
 def testCB():
-    res = request.get_json()
-    print(request.headers)
+    res = {
+        "body": request.get_json(),
+        "header": str(request.headers),
+    }
     return res
 
+
 if __name__ == '__main__':
-      app.run(host='0.0.0.0', port=5001, debug=True)
+    app.run(host='0.0.0.0', port=5001, debug=True)
