@@ -1,0 +1,5 @@
+curl --location --request POST 'localhost:5001/parse' \
+--form 'file=@"/Users/jeremyqian/Documents/receipts-parser/testImages/test.jpeg"' \
+--form 'isAsync="1"' \
+--form 'url="http://localhost:5001/echo"' \
+--form 'additionalHeaders="{\"name\":\"test\"}"'
