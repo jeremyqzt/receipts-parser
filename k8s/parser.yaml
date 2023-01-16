@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ribbonparse
+  labels:
+    app: ribbonparse
+spec:
+  selector:
+    matchLabels:
+      app: ribbonparse
+  template:
+    metadata:
+      labels:
+        app: ribbonparse
+    spec:
+      containers:
+      - name: ribbonbe-parse-app
+        image: jeremyqzt/ribbonparse
+        resources:
+          limits:
+            cpu: 600m
+          requests:
+            cpu: 550m
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ribbonparse
+  labels:
+    app: ribbonparse
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    name: 'http-ingress'
+  selector:
+    app: ribbonparse
