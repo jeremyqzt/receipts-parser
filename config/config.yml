@@ -14,15 +14,35 @@ companys:
     - walmart
     - wal-mart
     - wal mart
+  Freshco:
+    - freshco
+  Target:
+    - target
+  NoFrills:
+    - no-frills
+    - noFrills
+  CVS:
+    - cvs
 
 # Sum keys roughly ordered by likelyhood.
 sum_keys:
-  - sub total
   - total
+  - grand total
+  - grand sum
+  - payable
   - sum
   - fee
   - due
 
+subtotal_keys:
+  - sub total
+  - sum
+
+tax_keys:
+  - tax
+  - vat
+  - hst
+  - gst
 
 formats:
   # 

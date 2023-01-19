@@ -21,6 +21,9 @@ class Receipt(object):
         self.date = None
         self.postal = None
         self.sum = None
+        self.subtotal = None
+        self.tax = None
+
         self.lines = [l.lower() for l in raw.split('\n') if l.strip()]
         self.parse()
 
@@ -43,7 +46,9 @@ class Receipt(object):
             'company': self.company or 'unknown',
             'date': self.date or datetime.date(1970, 1, 1),
             'postal': self.postal or 'unknown',
-            'sum': '?' if self.sum is None else self.sum,
+            'sum': '0' if self.sum is None else self.sum,
+            'subtotal': '0' if self.sum is None else self.subtotal,
+            'tax': '0' if self.sum is None else self.tax,
         }
 
     def is_complete(self):
@@ -64,6 +69,8 @@ class Receipt(object):
         self.postal = self.parse_postal()
         self.date = self.parse_date()
         self.sum = self.parse_sum()
+        self.subtotal = self.parse_subtotal()
+        self.tax = self.parse_tax()
 
     def fuzzy_find(self, keyword, accuracy=0.6):
         """
@@ -133,6 +140,34 @@ class Receipt(object):
 
         for sum_key in self.config.sum_keys:
             sum_line = self.fuzzy_find(sum_key, 0.9)
+            if sum_line:
+                sum_line = sum_line.replace(",", ".")
+                sum_line = sum_line.replace(" ", ".")
+                sum_float = re.search(self.config.formats.sum, sum_line)
+                if sum_float:
+                    return sum_float.group(0)
+
+    def parse_subtotal(self):
+        """
+        :return: str
+        """
+
+        for key in self.config.subtotal_keys:
+            sum_line = self.fuzzy_find(key, 0.9)
+            if sum_line:
+                sum_line = sum_line.replace(",", ".")
+                sum_line = sum_line.replace(" ", ".")
+                sum_float = re.search(self.config.formats.sum, sum_line)
+                if sum_float:
+                    return sum_float.group(0)
+
+    def parse_tax(self):
+        """
+        :return: str
+        """
+
+        for key in self.config.tax_keys:
+            sum_line = self.fuzzy_find(key, 0.6)
             if sum_line:
                 sum_line = sum_line.replace(",", ".")
                 sum_line = sum_line.replace(" ", ".")

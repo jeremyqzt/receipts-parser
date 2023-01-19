@@ -54,7 +54,10 @@ class ReceiptReaderThread(threading.Thread):
             "company": receipt.company,
             "postal": receipt.postal,
             "date": receipt.date,
-            "sum": receipt.sum
+            "sum": receipt.sum,
+            "tax": receipt.tax,
+            "subtotal": receipt.subtotal
+
         }
 
         self.data = data
