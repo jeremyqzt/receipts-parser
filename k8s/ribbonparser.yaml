@@ -18,9 +18,9 @@ spec:
         image: jeremyqzt/ribbonparse
         resources:
           limits:
-            cpu: 600m
+            cpu: 400m
           requests:
-            cpu: 550m
+            cpu: 300m
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -34,7 +34,7 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: 8080
+  - port: 60000
     targetPort: 8080
     name: 'http-ingress'
   selector:
