@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ribbonparse
+  name: ribbonparser
   labels:
-    app: ribbonparse
+    app: ribbonparser
 spec:
   selector:
     matchLabels:
-      app: ribbonparse
+      app: ribbonparser
   template:
     metadata:
       labels:
-        app: ribbonparse
+        app: ribbonparser
     spec:
       containers:
       - name: ribbonbe-parse-app
-        image: jeremyqzt/ribbonparse
+        image: jeremyqzt/ribbonparser
         resources:
           limits:
-            cpu: 400m
+            cpu: 200m
           requests:
-            cpu: 300m
+            cpu: 200m
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -28,14 +28,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ribbonparse
+  name: ribbonparser
   labels:
-    app: ribbonparse
+    app: ribbonparser
 spec:
   type: NodePort
   ports:
-  - port: 60000
+  - port: 8090
     targetPort: 8080
     name: 'http-ingress'
   selector:
-    app: ribbonparse
+    app: ribbonparser
