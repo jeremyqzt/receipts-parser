@@ -14,5 +14,5 @@ RUN pip3 install -r requirements.txt
 
 RUN chmod +x ./startup.sh
 
-EXPOSE 8080
+EXPOSE 8090
 CMD ["./startup.sh"]

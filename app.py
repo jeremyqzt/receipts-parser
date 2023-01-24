@@ -2,14 +2,10 @@ from flask import Flask, request
 from services.parser import ReceiptReaderThread
 from data.callbackData import CallbackData
 from uuid import uuid4
-import json
 
-UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -18,6 +14,7 @@ def allowed_file(filename):
 
 @app.route('/parse', methods=['POST'])
 def acceptFile():
+    _ = request.data
     file = request.files['file']
     data = request.form
 
@@ -51,6 +48,9 @@ def testCB():
     }
     return res
 
+@app.route('/', methods=['GET'])
+def testHello():
+    return "Hello"
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=8090, debug=True)
