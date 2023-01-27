@@ -36,6 +36,5 @@ spec:
   ports:
   - port: 8090
     targetPort: 8090
-    name: 'http-ingress'
   selector:
     app: ribbonparser
