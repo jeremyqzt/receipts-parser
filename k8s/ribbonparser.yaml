@@ -18,9 +18,9 @@ spec:
         image: jeremyqzt/ribbonparser
         resources:
           limits:
-            cpu: 200m
+            cpu: 600m
           requests:
-            cpu: 200m
+            cpu: 400m
         imagePullPolicy: Always
         ports:
         - containerPort: 8090
