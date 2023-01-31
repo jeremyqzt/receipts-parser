@@ -9,7 +9,9 @@ companys:
   Nike:
     - nike
   Canada Post:
-    - deutsche post
+    - canada post
+  Canadian Tire:
+    - canadian tire
   Walmart:
     - walmart
     - wal-mart
@@ -23,6 +25,96 @@ companys:
     - noFrills
   CVS:
     - cvs
+  Amazon:
+    - amazon
+    - amazom.com
+    - amazon.ca
+  Costco:
+    - costco
+    - costco wholesale
+  Home Depot:
+    - the home depot
+    - home depot
+  Kroger:
+    - the kroger co
+    - kroger
+  Walgreens:
+    - wallgreens boot alliance
+    - wallgreen's
+    - wallgreen
+  Target:
+    - target
+  Lowes:
+    - lowes
+    - lowe's
+  Albertsons:
+    - albertsons
+    - albertson's
+  Publix:
+    - publix's
+    - publixs
+    - publix super markets
+  Best Buy:
+    - best buy
+  Dollar General:
+    - dollar general
+  Dollarama:
+    - dollarama
+  Dollar Tree:
+    - dollar tree
+  7 Eleven:
+    - 7 eleven
+    - 7-eleven
+  AT&T:
+    - at&t
+    - at t
+  Verizon:
+    - verizon
+    - verizon wireless
+  Kohl:
+    - kohl's
+    - kohls
+    - kohl
+  Nordstrom:
+    - nordstrom
+  Gap:
+    - gap
+  Macy's:
+    - macy
+    - macy's
+    - macys
+  AutoZone:
+    - auto zone
+    - autozone
+  Wayfair:
+    - way fair
+    - wayfair
+  Staples:
+    - staples
+    - staple
+    - staple's
+  Foot Locker:
+    - foot locker
+  Sephora:
+    - sephora
+  Petco:
+    - petco
+  Hudson's Bay:
+    - the bay
+    - hudson bay
+    - hudson's bay
+    - hudsons bay
+  Luluemon:
+    - lululemon
+  Urban Outfitters:
+    - urban outfitters
+    - urban outfitter
+    - urban outfiters
+    - urban outfiter
+  Barnes & Noble:
+    - barnes noble
+    - barn's and noble
+    - barnes & noble
 
 # Sum keys roughly ordered by likelyhood.
 sum_keys:
