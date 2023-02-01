@@ -3,7 +3,7 @@ from services.parser import ReceiptReaderThread
 from data.callbackData import CallbackData
 from uuid import uuid4
 
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
 
 app = Flask(__name__)
 
