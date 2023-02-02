@@ -13,4 +13,5 @@ def read_config(filename):
     """
     with open(filename, 'r') as fp:
         docs = yaml.safe_load(fp)
-        return munchify(docs)
+        ret = munchify(docs)
+        return ret

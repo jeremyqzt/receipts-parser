@@ -3,153 +3,192 @@ language: eng # As accepted by pytesseract, e.g. "eng+deu"
 # Can contain company locations for fuzzy parsing
 companys:
   Apple:
-    - apple
+    keywords:
+      - apple
     category: 14
   Adidas:
-    - adidas
+    keywords:
+      - adidas
     category: 7
   Nike:
-    - nike
+    keywords:
+      - nike
     category: 7
   Canada Post:
-    - canada post
+    keywords:
+      - canada post
     category: 11
   Canadian Tire:
-    - canadian tire
+    keywords:
+      - canadian tire
     category: 12
   Walmart:
-    - walmart
-    - wal-mart
-    - wal mart
+    keywords:
+      - walmart
+      - wal-mart
+      - wal mart
     category: 15
   Freshco:
-    - freshco
+    keywords:
+      - freshco
     category: 3
   Target:
-    - target
+    keywords:
+      - target
     category: 15
   NoFrills:
-    - no-frills
-    - noFrills
+    keywords:
+      - no-frills
+      - noFrills
     category: 3
   CVS:
-    - cvs
+    keywords:
+      - cvs
     category: 10
   Amazon:
-    - amazon
-    - amazom.com
-    - amazon.ca
+    keywords:
+      - amazon
+      - amazom.com
+      - amazon.ca
     category: 16
   Costco:
-    - costco
-    - costco wholesale
+    keywords:
+      - costco
+      - costco wholesale
     category: 15
   Home Depot:
-    - the home depot
-    - home depot
+    keywords:
+      - the home depot
+      - home depot
     category: 13
   Kroger:
-    - the kroger co
-    - kroger
+    keywords:
+      - the kroger co
+      - kroger
     category: 3
   Walgreens:
-    - wallgreens boot alliance
-    - wallgreen's
-    - wallgreen
+    keywords:
+      - wallgreens boot alliance
+      - wallgreen's
+      - wallgreen
     category: 15
   Lowes:
-    - lowes
-    - lowe's
+    keywords:
+      - lowes
+      - lowe's
   Albertsons:
-    - albertsons
-    - albertson's
+    keywords:
+      - albertsons
+      - albertson's
     category: 3
   Publix:
-    - publix's
-    - publixs
-    - publix super markets
+    keywords:
+      - publix's
+      - publixs
+      - publix super markets
     category: 3
   Best Buy:
-    - best buy
+    keywords:
+      - best buy
     category: 6
   Dollar General:
-    - dollar general
+    keywords:
+      - dollar general
     category: 9
   Dollarama:
-    - dollarama
+    keywords:
+      - dollarama
     category: 9
   Dollar Tree:
-    - dollar tree
+    keywords:
+      - dollar tree
     category: 9
   7 Eleven:
-    - 7 eleven
-    - 7-eleven
+    keywords:
+      - 7 eleven
+      - 7-eleven
     category: 15
   AT&T:
-    - at&t
-    - at t
+    keywords:
+      - at&t
+      - at t
     category: 14
   Verizon:
-    - verizon
-    - verizon wireless
+    keywords:
+      - verizon
+      - verizon wireless
     category: 14
   Kohl:
-    - kohl's
-    - kohls
-    - kohl
+    keywords:
+      - kohl's
+      - kohls
+      - kohl
     category: 3
   Nordstrom:
-    - nordstrom
+    keywords:
+      - nordstrom
     category: 7
   Gap:
-    - gap
+    keywords:
+      - gap
     category: 7
   Macy's:
-    - macy
-    - macy's
-    - macys
+    keywords:
+      - macy
+      - macy's
+      - macys
     category: 7
   AutoZone:
-    - auto zone
-    - autozone
+    keywords:
+      - auto zone
+      - autozone
     category: 12
   Wayfair:
-    - way fair
-    - wayfair
+    keywords:
+      - way fair
+      - wayfair
     category: 9
   Staples:
-    - staples
-    - staple
-    - staple's
+    keywords:
+      - staples
+      - staple
+      - staple's
     category: 9
   Foot Locker:
-    - foot locker
+    keywords:
+      - foot locker
     category: 7
   Sephora:
-    - sephora
+    keywords:
+      - sephora
     category: 16
   Petco:
-    - petco
+    keywords:
+      - petco
     category: 13
   Hudson's Bay:
-    - the bay
-    - hudson bay
-    - hudson's bay
-    - hudsons bay
+    keywords:
+      - the bay
+      - hudson bay
+      - hudson's bay
+      - hudsons bay
     category: 7
   Luluemon:
-    - lululemon
+    keywords:
+      - lululemon
     category: 7
   Urban Outfitters:
-    - urban outfitters
-    - urban outfitter
-    - urban outfiters
-    - urban outfiter
+    keywords:
+      - urban outfitters
+      - urban outfitter
+      - urban outfiters
+      - urban outfiter
     category: 7
   Barnes & Noble:
-    - barnes noble
-    - barn's and noble
-    - barnes & noble
+    keywords:
+      - barnes noble
+      - barn's and noble
+      - barnes & noble
     category: 16
 
 # Sum keys roughly ordered by likelyhood.
@@ -173,14 +212,14 @@ tax_keys:
   - gst
 
 formats:
-  # 
+  #
   sum: '\d+(\.\s?|,\s?|[^a-zA-Z\d])\d{2}'
   #\$?
-  # 11.00 # [] is one character # ? 有冇都得 # . 咩都得 # \s 
-  # 11,00 
+  # 11.00 # [] is one character # ? 有冇都得 # . 咩都得 # \s
+  # 11,00
   # 11@01
 
-  # Matches dates like 19.08.15 and 19. 08. 2015  , 19/08/15 and 19/ 08/ 2015  
+  # Matches dates like 19.08.15 and 19. 08. 2015  , 19/08/15 and 19/ 08/ 2015
   # date: '\b([0123]?\d\s?[\.\ /]\s?[01]?\d\s?[\.\ /]\s?(?:20)?\d\d)\b|\b([0123]?\d\s?\/\s?[01]?\d\s?\/\s?(?:20)?\d\d)\b'
   # date: '(0[1-9]|[1-9]|1[0-2])[/.\ ](\d|0\d|1\d|2\d|3[01])[/.\ ](20)?\d{2}|(\d|0\d|1\d|2\d|3[01])[/.\ ](0[1-9]|[1-9]|1[0-2])[/.\ ](20)?\d{2}'
   date: '((0[1-9]|[1-9]|1[0-2])[/.\ \-\,](\d|0\d|1\d|2\d|3[01])[/.\ \-\,](20)?\d{2})|((\d|0\d|1\d|2\d|3[01])[/.\ \-\,](0[1-9]|[1-9]|1[0-2])[/.\ \-\,](20)?\d{2})'

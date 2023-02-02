@@ -17,6 +17,7 @@ class Receipt(object):
         """
         self.config = config
         self.filename = filename
+        self.category = 0
         self.company = None
         self.date = None
         self.postal = None
@@ -49,6 +50,7 @@ class Receipt(object):
             'sum': '0' if self.sum is None else self.sum,
             'subtotal': '0' if self.sum is None else self.subtotal,
             'tax': '0' if self.sum is None else self.tax,
+            'category': self.category,
         }
 
     def is_complete(self):
@@ -65,7 +67,7 @@ class Receipt(object):
             Parses obj data
         """
 
-        self.company = self.parse_company()
+        self.company, self.category = self.parse_company()
         self.postal = self.parse_postal()
         self.date = self.parse_date()
         self.sum = self.parse_sum()
@@ -128,10 +130,10 @@ class Receipt(object):
         for int_accuracy in range(10, 6, -1):
             accuracy = int_accuracy/10.0
             for company, spellings in self.config.companys.items():
-                for spelling in spellings:
+                for spelling in spellings.keywords:
                     line = self.fuzzy_find(spelling, accuracy)
                     if line:
-                        return company
+                        return company, spellings.category
 
     def parse_sum(self):
         """
