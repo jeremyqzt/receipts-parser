@@ -4,117 +4,153 @@ language: eng # As accepted by pytesseract, e.g. "eng+deu"
 companys:
   Apple:
     - apple
+    category: 14
   Adidas:
     - adidas
+    category: 7
   Nike:
     - nike
+    category: 7
   Canada Post:
     - canada post
+    category: 11
   Canadian Tire:
     - canadian tire
+    category: 12
   Walmart:
     - walmart
     - wal-mart
     - wal mart
+    category: 15
   Freshco:
     - freshco
+    category: 3
   Target:
     - target
+    category: 15
   NoFrills:
     - no-frills
     - noFrills
+    category: 3
   CVS:
     - cvs
+    category: 10
   Amazon:
     - amazon
     - amazom.com
     - amazon.ca
+    category: 16
   Costco:
     - costco
     - costco wholesale
+    category: 15
   Home Depot:
     - the home depot
     - home depot
+    category: 13
   Kroger:
     - the kroger co
     - kroger
+    category: 3
   Walgreens:
     - wallgreens boot alliance
     - wallgreen's
     - wallgreen
-  Target:
-    - target
+    category: 15
   Lowes:
     - lowes
     - lowe's
   Albertsons:
     - albertsons
     - albertson's
+    category: 3
   Publix:
     - publix's
     - publixs
     - publix super markets
+    category: 3
   Best Buy:
     - best buy
+    category: 6
   Dollar General:
     - dollar general
+    category: 9
   Dollarama:
     - dollarama
+    category: 9
   Dollar Tree:
     - dollar tree
+    category: 9
   7 Eleven:
     - 7 eleven
     - 7-eleven
+    category: 15
   AT&T:
     - at&t
     - at t
+    category: 14
   Verizon:
     - verizon
     - verizon wireless
+    category: 14
   Kohl:
     - kohl's
     - kohls
     - kohl
+    category: 3
   Nordstrom:
     - nordstrom
+    category: 7
   Gap:
     - gap
+    category: 7
   Macy's:
     - macy
     - macy's
     - macys
+    category: 7
   AutoZone:
     - auto zone
     - autozone
+    category: 12
   Wayfair:
     - way fair
     - wayfair
+    category: 9
   Staples:
     - staples
     - staple
     - staple's
+    category: 9
   Foot Locker:
     - foot locker
+    category: 7
   Sephora:
     - sephora
+    category: 16
   Petco:
     - petco
+    category: 13
   Hudson's Bay:
     - the bay
     - hudson bay
     - hudson's bay
     - hudsons bay
+    category: 7
   Luluemon:
     - lululemon
+    category: 7
   Urban Outfitters:
     - urban outfitters
     - urban outfitter
     - urban outfiters
     - urban outfiter
+    category: 7
   Barnes & Noble:
     - barnes noble
     - barn's and noble
     - barnes & noble
+    category: 16
 
 # Sum keys roughly ordered by likelyhood.
 sum_keys:
