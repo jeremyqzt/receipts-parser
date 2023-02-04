@@ -17,7 +17,7 @@ class Receipt(object):
         """
         self.config = config
         self.filename = filename
-        self.category = 0
+        self.category = 1
         self.company = None
         self.date = None
         self.postal = None
