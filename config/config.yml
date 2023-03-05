@@ -32,6 +32,7 @@ companys:
       - walmart
       - wal-mart
       - wal mart
+      - save money live better
     category: 15
   Freshco:
     keywords:
@@ -48,7 +49,7 @@ companys:
     category: 3
   CVS:
     keywords:
-      - cvs
+      - cvs pharmacy
     category: 10
   Amazon:
     keywords:
@@ -205,6 +206,10 @@ sum_keys:
   - sum
   - fee
   - due
+  - debit
+  - credit
+  - tender
+  - cash
 
 subtotal_keys:
   - sub total

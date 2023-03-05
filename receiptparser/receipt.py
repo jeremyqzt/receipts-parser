@@ -147,7 +147,10 @@ class Receipt(object):
                 sum_line = sum_line.replace(" ", ".")
                 sum_float = re.search(self.config.formats.sum, sum_line)
                 if sum_float:
-                    return sum_float.group(0)
+                    try:
+                        return float(sum_float.group(0))
+                    except:
+                        return None
 
     def parse_subtotal(self):
         """
@@ -161,7 +164,10 @@ class Receipt(object):
                 sum_line = sum_line.replace(" ", ".")
                 sum_float = re.search(self.config.formats.sum, sum_line)
                 if sum_float:
-                    return sum_float.group(0)
+                    try:
+                        return float(sum_float.group(0))
+                    except:
+                        return None
 
     def parse_tax(self):
         """
@@ -175,4 +181,7 @@ class Receipt(object):
                 sum_line = sum_line.replace(" ", ".")
                 sum_float = re.search(self.config.formats.sum, sum_line)
                 if sum_float:
-                    return sum_float.group(0)
+                    try:
+                        return float(sum_float.group(0))
+                    except:
+                        return None
