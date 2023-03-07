@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: ribbonbe-parse-app
-        image: jeremyqzt/ribbonparser
+        image: $IMAGE
         resources:
           limits:
             cpu: 600m
