@@ -18,9 +18,9 @@ spec:
         image: $IMAGE
         resources:
           limits:
-            cpu: 600m
-          requests:
             cpu: 400m
+          requests:
+            cpu: 300m
         imagePullPolicy: Always
         ports:
         - containerPort: 8090
